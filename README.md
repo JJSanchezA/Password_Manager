@@ -12,5 +12,4 @@
 	*Números
 	*Símbolos
 
-Esta aplicación es con fines didácticos y el archivo de salida obtenido es en texto plano.
-Cualquiero que quiera puede aplicar a la salida/lectura cualquiero tipo de cifrado.
+Esta aplicación está hecha con fines didácticos, por lo que el archivo de salida obtenido está en texto plano.
