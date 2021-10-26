@@ -127,7 +127,7 @@ def add_pass():
                                                 message="La clave se ha actualizado con éxito")
                     else:
                         break
-            # Entramos aquí si la clave no esyá ya almacenada
+            # Entramos aquí si la clave no está ya almacenada
             # Si queremos almacenar los datos, y no se ha sobreescrito ya... lo hacemos
             if bool_es_nueva:
                 # Declaro la variable del archivo de salida para evitar errores en el "finally".
@@ -218,9 +218,19 @@ ventana.resizable(width=False, height=False)
 ventana.config(padx=20, pady=20)
 # Creo el canvas
 canvas_ventana = tkinter.Canvas(width=200, heigh=200)
-imagen_canvas = tkinter.PhotoImage(file="logo.png")
-canvas_ventana.create_image(100, 100, image=imagen_canvas)
-canvas_ventana.grid(row=0, column=1)
+# Vemos si está el icono de logo. Si no está, ejecutamos sin logo.
+try:
+    file = open(file="logo.png", mode="r")
+    file.close()
+except FileNotFoundError:
+    # Si no encuentra el icono, ponemos un cuadrado el mismo tamaño en rojo.
+    messagebox.showinfo(title="Error", message="Imagen -logo- no encontrada.")
+    canvas_ventana.create_rectangle(0, 0, 200, 200, fill="red")
+    canvas_ventana.grid(row=0, column=1)
+else:
+    imagen_canvas = tkinter.PhotoImage(file="logo.png")
+    canvas_ventana.create_image(100, 100, image=imagen_canvas)
+    canvas_ventana.grid(row=0, column=1)
 # Etiquetas
 etiqueta_user_mail = tkinter.Label(text="Email/Username")
 etiqueta_user_mail.grid(row=1, column=0)
